@@ -6,13 +6,16 @@ const router = (0, express_1.Router)();
 // router.get("/", (req, res, next) => {
 //   res.status(200).json({ data: eGridData });
 // });
-router.get("api/egrid-data", (req, res, next) => {
-    res.status(200).json({ data: egrid_data_1.eGridData });
+const filteredData = egrid_data_1.eGridData.filter((data) => {
+    return data.LAT && data.LON && data.PNAME;
 });
-router.get("/api/egrid-data/:paname", (req, res, next) => {
+router.get("/egrid-data", (req, res, next) => {
+    res.status(200).json({ data: filteredData });
+});
+router.get("/egrid-data/:paname", (req, res, next) => {
     const params = req.params;
     const paname = params.paname;
-    const matchingData = egrid_data_1.eGridData.filter((item) => item.PNAME.includes(paname));
+    const matchingData = filteredData.filter((item) => item.PNAME.includes(paname));
     if (matchingData && matchingData.length > 0) {
         return res.status(200).json({ message: "Success", data: matchingData });
     }
