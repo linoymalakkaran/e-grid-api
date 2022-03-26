@@ -7,7 +7,12 @@ const router = (0, express_1.Router)();
 //   res.status(200).json({ data: eGridData });
 // });
 const filteredData = egrid_data_1.eGridData.filter((data) => {
-    return data.LAT && data.LON && data.PNAME;
+    if (data.LAT && data.LON && data.PNAME && data.PLNGENAN) {
+        return true;
+    }
+    else {
+        return false;
+    }
 });
 router.get("/egrid-data", (req, res, next) => {
     res.status(200).json({ data: filteredData });
