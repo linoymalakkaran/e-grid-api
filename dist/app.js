@@ -16,6 +16,7 @@ app.use(body_parser_1.default.json());
 app.use(body_parser_1.default.urlencoded({
     extended: true,
 }));
+app.use(express_1.default.static("public"));
 app.use("/api", egrid_routes_1.default);
 const port = process.env.PORT || 9000;
 app.listen(port, () => {

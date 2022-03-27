@@ -21,6 +21,7 @@ app.use(
   })
 );
 
+app.use(express.static("public"));
 app.use("/api", eGridRoutes);
 
 const port = process.env.PORT || 9000;
