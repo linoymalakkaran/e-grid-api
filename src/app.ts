@@ -24,6 +24,11 @@ app.use(
 app.use(express.static("public"));
 app.use("/api", eGridRoutes);
 
+// Default route
+app.get("*", (req, res) => {
+  res.send("PAGE NOT FOUND");
+});
+
 const port = process.env.PORT || 9000;
 app.listen(port, () => {
   console.log(`App running => http://localhost:%d`, port);
