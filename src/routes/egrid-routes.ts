@@ -5,10 +5,6 @@ import { eGridData } from "../data-provider/egrid-data";
 type RequestParams = { paname: string };
 const router = Router();
 
-// router.get("/", (req, res, next) => {
-//   res.status(200).json({ data: eGridData });
-// });
-
 const filteredData = eGridData.filter((data) => {
   if (data.LAT && data.LON && data.PNAME && data.PLNGENAN) {
     return true;
