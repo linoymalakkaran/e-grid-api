@@ -3,9 +3,6 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const egrid_data_1 = require("../data-provider/egrid-data");
 const router = (0, express_1.Router)();
-// router.get("/", (req, res, next) => {
-//   res.status(200).json({ data: eGridData });
-// });
 const filteredData = egrid_data_1.eGridData.filter((data) => {
     if (data.LAT && data.LON && data.PNAME && data.PLNGENAN) {
         return true;
